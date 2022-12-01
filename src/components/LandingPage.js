@@ -3,7 +3,12 @@ import Introduction from "./Introduction";
 
 function LandingPage() {
   const { isLoading, isError, data } = useHotelData();
-  
+
+  //SAVE the hotel to the local storage
+  const saveAPIDataToLocalStorage = (data) => {
+      localStorage.setItem('hotel',JSON.stringify(data));
+  }
+
   return (
     <>
       {/**Hotel welcome section */}
@@ -31,7 +36,7 @@ function LandingPage() {
       )}
       {data && (
         <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
-          {console.log(data)}
+          {saveAPIDataToLocalStorage(data)}
         </div>
       )}
     </>

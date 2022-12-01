@@ -2,7 +2,7 @@ import axios from 'axios';
 import {useQuery} from 'react-query';
 
 
-const BIN_ID = "638738a4003d6444ce5ecb59";
+const BIN_ID = "6388ac3b7966e84526d13373";
 
 export default function useHotelData () {
     return useQuery('allHotelData' , async () => {
