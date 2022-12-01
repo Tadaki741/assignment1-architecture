@@ -8,14 +8,14 @@ import { QueryClient, QueryClientProvider } from "react-query";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      refetchOnWindowFocus: false,
+      refetchOnWindowFocus: false, //prevent react from fetch data again when we switch to another tab
     },
   },
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  //<React.StrictMode>
+  //<React.StrictMode> we remove the strictmode to prevent react reload 2 times
     <QueryClientProvider client={queryClient}>
       <App />
     </QueryClientProvider>
