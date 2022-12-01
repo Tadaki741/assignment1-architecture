@@ -2,7 +2,7 @@ import Navbar from "./NavBar";
 
 function Introduction() {
   return (
-    <div id="parent-container">
+    <div id="parent-container" className="md:container md:mx-auto">
       {/**Navbar for the hotel */}
       <Navbar />
 
@@ -14,11 +14,11 @@ function Introduction() {
       </div>
 
       {/*Image of the hotel in List*/}
-      <div id="image-section" class="flex items-end">
+      <div id="image-section" className="">
         <img
-          className="w-1/2"
+          className="max-w-auto h-auto rounded-lg mx-auto"
           alt="hotelImage"
-          src="https://cdn.britannica.com/96/115096-050-5AFDAF5D/Bellagio-Hotel-Casino-Las-Vegas.jpg"
+          src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2074&q=80"
         ></img>
       </div>
     </div>

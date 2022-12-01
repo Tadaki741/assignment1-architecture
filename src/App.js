@@ -1,9 +1,14 @@
 import "./App.css";
 import Introduction from "./components/Introduction";
+import useHotelData from "./hooks/useHotelData";
 
 function App() {
+
+  const {isLoading, isError, data} = useHotelData(); 
+
+
   return (
-    <div className="App">
+    <>
       {/**Hotel welcome section */}
       <div id="introduction-place">
         <Introduction />
@@ -14,7 +19,25 @@ function App() {
 
       {/**Place for the user to book the room */}
       <div id="booking-rooms"></div>
-    </div>
+
+      {/**Get the data */}
+      {isLoading && (
+        <div className="text-center">
+          <strong>Loading...</strong>
+        </div>
+      )}
+
+      {isError && (
+        <div className="text-center">
+          <strong>Error!</strong>
+        </div>
+      )}
+      {data && (
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+          {console.log(data)}
+        </div>
+      )}
+    </>
   );
 }
 
