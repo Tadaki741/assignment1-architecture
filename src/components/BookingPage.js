@@ -15,7 +15,7 @@ function BookingPage() {
   return (
     <>
       <div className="headerSearch">
-        <h2>The number of hotel {console.log(room_list)}</h2>
+        <h2>{console.log(room_list)}</h2>
 
         <div className="headerSearchItem">
           <FontAwesomeIcon icon={faBed} className="headerIcon" />
@@ -37,12 +37,12 @@ function BookingPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
-          {room_list &&
-            room_list.length > 0 &&
-            room_list.map((p, i) => <RoomInfo key={i} room={p} />)}
-        </div>
-
+      {/**Display the list of room for the guest*/}
+      <div className="container w-100 lg:w-3/5 mx-auto flex flex-col">
+        {room_list &&
+          room_list.length > 0 &&
+          room_list.map((p, i) => <RoomInfo key={i} room={p} />)}
+      </div>
     </>
   );
 }
