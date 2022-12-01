@@ -1,4 +1,9 @@
 import React from "react";
+import { Route, Routes, Link } from "react-router-dom";
+import LandingPage from "./LandingPage";
+import LoginForm from "./LoginForm";
+import BookingPage from "./BookingPage";
+import MoreInfoPage from "./MoreInfoPage";
 
 export default function Navbar({ fixed }) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
@@ -30,33 +35,45 @@ export default function Navbar({ fixed }) {
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
-                >
-                  <i className="fab fa-facebook-square text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Login</span>
-                </a>
+                <i className="fab fa-facebook-square text-lg leading-lg text-white opacity-75"></i>
+
+                <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                  <Link to="/">Home</Link>
+                </button>
               </li>
+
               <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
-                >
-                  <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Booking</span>
-                </a>
+                <i className="fab fa-facebook-square text-lg leading-lg text-white opacity-75"></i>
+                <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                  <Link to="/LoginForm">Login</Link>
+                </button>
               </li>
+
               <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
-                >
-                  <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">More Info</span>
-                </a>
+                <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i>
+                <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                  <Link to="/BookingPage">Booking</Link>
+                </button>
+              </li>
+
+              <li className="nav-item">
+                <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i>
+                <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                  <Link to="/MoreInfoPage">More Info</Link>
+                </button>
               </li>
             </ul>
           </div>
         </div>
       </nav>
+
+      {/**Nav bar to go to other pages */}
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/LoginForm" element={<LoginForm />} />
+        <Route path="/BookingPage" element={<BookingPage />} />
+        <Route path="/MoreInfoPage" element={<MoreInfoPage />} />
+      </Routes>
     </>
   );
 }

@@ -1,10 +1,7 @@
-import Navbar from "./NavBar";
 
 function Introduction() {
   return (
     <div id="parent-container" className="md:container md:mx-auto">
-      {/**Navbar for the hotel */}
-      <Navbar />
 
       {/**Display the name */}
       <div className="text-center py-6 mb-5">

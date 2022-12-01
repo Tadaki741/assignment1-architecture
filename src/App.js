@@ -1,42 +1,15 @@
 import "./App.css";
-import Introduction from "./components/Introduction";
-import useHotelData from "./hooks/useHotelData";
+import { BrowserRouter } from "react-router-dom";
+import Navbar from "./components/NavBar";
 
 function App() {
-
-  const {isLoading, isError, data} = useHotelData(); 
-
-
   return (
     <>
-      {/**Hotel welcome section */}
-      <div id="introduction-place">
-        <Introduction />
+      <div>
+        <BrowserRouter>
+          <Navbar></Navbar>
+        </BrowserRouter>
       </div>
-
-      {/**More description of the hotel */}
-      <div id="hotel-description"></div>
-
-      {/**Place for the user to book the room */}
-      <div id="booking-rooms"></div>
-
-      {/**Get the data */}
-      {isLoading && (
-        <div className="text-center">
-          <strong>Loading...</strong>
-        </div>
-      )}
-
-      {isError && (
-        <div className="text-center">
-          <strong>Error!</strong>
-        </div>
-      )}
-      {data && (
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
-          {console.log(data)}
-        </div>
-      )}
     </>
   );
 }
