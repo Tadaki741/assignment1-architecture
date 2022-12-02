@@ -1,36 +1,36 @@
 import React, { useState } from "react";
 import moment from "moment";
 import Room from "../modeldata/Room";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
 const notify = () => {
-  toast('Room booked successfully !', {
+  toast("Room booked successfully !", {
     style: {
-      backgroundColor: '#AAFF00',
-      border: '1px solid black',
+      backgroundColor: "#AAFF00",
+      border: "1px solid black",
     },
   });
-}
+};
 
 function Modal({ setIsOpen, roomName, roomSize, roomRate }) {
   //Verify the user has inputed all the nesscesary value
   //username
-  const [username, setUserName] = useState("");
+  const [username, setUserName] = useState(null);
 
   //guest
   const [guest, setGuest] = useState(0);
 
   //email
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(null);
 
   //phone
   const [phone, setPhone] = useState(0);
 
   //check in date
-  const [checkInDate, setCheckInDate] = useState();
+  const [checkInDate, setCheckInDate] = useState(null);
 
   //check out date
-  const [checkOutDate, setCheckOutDate] = useState();
+  const [checkOutDate, setCheckOutDate] = useState(null);
 
   const [price, setPrice] = useState(0);
 
@@ -44,28 +44,74 @@ function Modal({ setIsOpen, roomName, roomSize, roomRate }) {
       checkOutDate,
       price
     );
+
+    //Save
     var roomList = JSON.parse(localStorage.getItem("bookedRooms"));
 
-    if (roomList === null) {
-      roomList = [];
-      roomList.push(room);
+    //Check if all field has been filled
+    if (
+      username !== null &&
+      guest !== null &&
+      email !== null &&
+      phone !== null &&
+      checkInDate !== null &&
+      checkOutDate !== null &&
+      price > 0
+    ) {
+      if (roomList === null) {
+        roomList = [];
+        roomList.push(room);
 
-      //Save
-      localStorage.setItem("bookedRooms", JSON.stringify(roomList));
+        //Save
+        localStorage.setItem("bookedRooms", JSON.stringify(roomList));
+      } else {
+        roomList.push(room);
+        //Save
+        localStorage.setItem("bookedRooms", JSON.stringify(roomList));
+      }
+
+      //Notify save completed
+      notify();
     } else {
-      roomList.push(room);
-
-      //Save
-      localStorage.setItem("bookedRooms", JSON.stringify(roomList));
+      console.log(username);
+      console.log(guest);
+      console.log(email);
+      console.log(phone);
+      console.log(checkInDate);
+      console.log(checkOutDate);
+      console.log(price);
+      alert("fill in all the field please !");
     }
-
-    //Notify save completed
-    notify();
   };
 
   //Function to display the price for the customer
   const calculateTotalPrice = () => {
-    const MULTIPLIER = 1;
+    var MULTIPLIER = 1;
+
+    //Get the value from the admin in local storage
+    //Check if localStorage has it
+    const adminHighDate = JSON.parse(localStorage.getItem("highValueDate"));
+
+    //Validate date
+    if(moment(checkInDate).isAfter(checkOutDate)){
+      alert('incorrect date !');
+      return;
+      
+    }
+
+    //Has value
+    if (adminHighDate !== null) {
+      //Check if the current selected date is between the rage of high value date
+      var start = adminHighDate.highCostDateEnd;
+      var end = adminHighDate.highCostDateStart;
+      var multiplierGet = adminHighDate.multiplier;
+      var flag = moment(checkInDate).isBetween(start, end);
+      if (flag === true) {
+        MULTIPLIER = parseInt(multiplierGet);
+      }
+      console.log(MULTIPLIER);
+    }
+
     const a = moment(checkInDate);
     const b = moment(checkOutDate);
     const diff = b.diff(a);
@@ -169,8 +215,9 @@ function Modal({ setIsOpen, roomName, roomSize, roomRate }) {
           Calculate price
         </button>
 
-        <button className="text-white bg-green-600 hover:bg-green-400 focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center m-3"
-                onClick={() => save() }
+        <button
+          className="text-white bg-green-600 hover:bg-green-400 focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center m-3"
+          onClick={() => save()}
         >
           Rent !
         </button>

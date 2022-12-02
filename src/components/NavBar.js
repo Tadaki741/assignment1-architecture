@@ -65,7 +65,7 @@ export default function Navbar({ fixed }) {
       {/**Nav bar to go to other pages */}
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/LoginForm" element={<AdminPage />} />
+        <Route path="/Admin" element={<AdminPage />} />
         <Route path="/BookingPage" element={<BookingPage />} />
         <Route path="/MoreInfoPage" element={<MoreInfoPage />} />
       </Routes>
