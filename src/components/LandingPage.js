@@ -43,7 +43,8 @@ function LandingPage() {
         </div>
       )}
 
-      <LandingPageMiddle/>
+      
+      <LandingPageMiddle />
     </>
   );
 }

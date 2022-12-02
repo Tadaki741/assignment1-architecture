@@ -16,10 +16,10 @@ export default function RoomInfo({ room }) {
           src={room.image_src}
         ></img>
 
-        <h2 className="text-lg font-bold mb-0">{room.name}</h2>
-        <h2 className="text-2xl text-purple-500 m-2">Current quantity available: {room.number_of_rooms}</h2>
-        <h2 className="text-2xl text-purple-500 m-2">Room rate: {room.rate} $</h2>
-        <h3 className="text-2xl text-purple-500 m-2">Size: {room.size} m2</h3>
+        <h2 className="text-3xl text-cyan-200 font-bold mb-0">{room.name}</h2>
+        <h2 className="text-1xl text-purple-500 m-2">Current quantity available: {room.number_of_rooms}</h2>
+        <h2 className="text-1xl text-purple-500 m-2">Room rate: {room.rate} $</h2>
+        <h3 className="text-1xl text-purple-500 m-2">Size: {room.size} m2</h3>
       </div>
 
       <div>
