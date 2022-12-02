@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, Routes, Link } from "react-router-dom";
 import LandingPage from "./LandingPage";
-import LoginForm from "./LoginForm";
 import BookingPage from "./BookingPage";
 import MoreInfoPage from "./MoreInfoPage";
+import AdminPage from "./AdminPage";
 
 export default function Navbar({ fixed }) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
@@ -42,12 +42,7 @@ export default function Navbar({ fixed }) {
                 </button>
               </li>
 
-              <li className="nav-item">
-                <i className="fab fa-facebook-square text-lg leading-lg text-white opacity-75"></i>
-                <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                  <Link to="/LoginForm">Login</Link>
-                </button>
-              </li>
+              
 
               <li className="nav-item">
                 <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i>
@@ -70,7 +65,7 @@ export default function Navbar({ fixed }) {
       {/**Nav bar to go to other pages */}
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/LoginForm" element={<LoginForm />} />
+        <Route path="/LoginForm" element={<AdminPage />} />
         <Route path="/BookingPage" element={<BookingPage />} />
         <Route path="/MoreInfoPage" element={<MoreInfoPage />} />
       </Routes>
