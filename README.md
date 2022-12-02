@@ -1,3 +1,8 @@
+#To Dr. Thanh NN for running the zip file:
+1. Download this project as zip file to computer
+2. open the project folder and run command "npm install"
+3. run another command "npm run start" and the application will automatically start
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
