@@ -10,7 +10,7 @@ function BookingPage() {
   return (
     <>
       {/**Display the list of room for the guest*/}
-      <div className="container w-100 lg:w-3/5 mx-auto flex flex-col">
+      <div className="container mx-auto flex flex-col bg-gray-300 w-full">
         {room_list &&
           room_list.length > 0 &&
           room_list.map((p, i) => <RoomInfo key={i} room={p} />)}

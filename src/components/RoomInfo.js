@@ -8,10 +8,10 @@ export default function RoomInfo({ room }) {
   const [isOpen,setIsOpen] = useState(false);
 
   return (
-    <div className="relative border rounded-lg m-5 text-center cursor-pointer transition hover:border-x-red-300 hover:border-y-purple-200 hover:shadow-lg">
+    <div className="relative border bg-black rounded-lg mx-auto m-3 text-center cursor-pointer transition hover:border-x-red-300 hover:border-y-purple-200 hover:shadow-lg">
       <div className="p-1">
         <img
-          className="w-auto h-auto rounded-2xl"
+          className="w-100 h-50 rounded-2xl"
           alt="roomImage"
           src={room.image_src}
         ></img>

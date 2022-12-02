@@ -1,3 +1,4 @@
+import LandingPageMiddle from "../decorations/LandingPageMiddle";
 import useHotelData from "../hooks/useHotelData";
 import Introduction from "./Introduction";
 
@@ -15,6 +16,8 @@ function LandingPage() {
       <div id="introduction-place">
         <Introduction />
       </div>
+
+      <div className="container"></div>
 
       {/**More description of the hotel */}
       <div id="hotel-description"></div>
@@ -39,6 +42,8 @@ function LandingPage() {
           {saveAPIDataToLocalStorage(data)}
         </div>
       )}
+
+      <LandingPageMiddle/>
     </>
   );
 }
