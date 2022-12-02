@@ -73,13 +73,6 @@ function Modal({ setIsOpen, roomName, roomSize, roomRate }) {
       //Notify save completed
       notify();
     } else {
-      console.log(username);
-      console.log(guest);
-      console.log(email);
-      console.log(phone);
-      console.log(checkInDate);
-      console.log(checkOutDate);
-      console.log(price);
       alert("fill in all the field please !");
     }
   };
@@ -93,10 +86,9 @@ function Modal({ setIsOpen, roomName, roomSize, roomRate }) {
     const adminHighDate = JSON.parse(localStorage.getItem("highValueDate"));
 
     //Validate date
-    if(moment(checkInDate).isAfter(checkOutDate)){
-      alert('incorrect date !');
+    if (moment(checkInDate).isAfter(checkOutDate)) {
+      alert("incorrect date !");
       return;
-      
     }
 
     //Has value
@@ -109,7 +101,6 @@ function Modal({ setIsOpen, roomName, roomSize, roomRate }) {
       if (flag === true) {
         MULTIPLIER = parseInt(multiplierGet);
       }
-      console.log(MULTIPLIER);
     }
 
     const a = moment(checkInDate);
