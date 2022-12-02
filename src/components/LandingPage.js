@@ -1,3 +1,4 @@
+import CarouselSlider from "../decorations/CarouselSlider";
 import LandingPageMiddle from "../decorations/LandingPageMiddle";
 import useHotelData from "../hooks/useHotelData";
 import Introduction from "./Introduction";
@@ -43,8 +44,9 @@ function LandingPage() {
         </div>
       )}
 
-      
       <LandingPageMiddle />
+      
+      <CarouselSlider/>
     </>
   );
 }
