@@ -45,8 +45,10 @@ function LandingPage() {
       )}
 
       <LandingPageMiddle />
-      
-      <CarouselSlider/>
+
+      <div className="mx-auto w-auto h-auto">
+        <CarouselSlider />
+      </div>
     </>
   );
 }
