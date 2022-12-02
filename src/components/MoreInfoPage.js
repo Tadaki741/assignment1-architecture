@@ -2,7 +2,7 @@ function MoreInfoPage() {
   return (
     <div className="m-5 mx-auto">
       <p class="font-light text-black dark:text-gray-400">
-        This website has been created by Vo Dai Duong, currently a student of RMIT University Vietnam, and this is a assignment 1
+        This website has been created by Vo Dai Duong (s3821186), currently a student of RMIT University Vietnam, and this is a assignment 1
       </p>
       <div
         id="popover-image"
