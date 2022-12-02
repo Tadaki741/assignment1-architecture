@@ -1,3 +1,5 @@
+
+//This class is used when storing data when the user book the room
 class Room {
     constructor(ownerName,guestAmount,ownerEmail,ownerPhone,checkInDate,checkOutDate,totalPrice){
         this.ownerName = ownerName;

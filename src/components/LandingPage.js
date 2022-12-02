@@ -6,8 +6,8 @@ function LandingPage() {
 
   //SAVE the hotel to the local storage
   const saveAPIDataToLocalStorage = (data) => {
-      localStorage.setItem('hotel',JSON.stringify(data));
-  }
+    localStorage.setItem("hotel", JSON.stringify(data));
+  };
 
   return (
     <>
