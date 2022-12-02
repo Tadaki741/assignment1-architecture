@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import moment from "moment";
 import Room from "../modeldata/Room";
+import toast from 'react-hot-toast';
+
+const notify = () => {
+  toast('Room booked successfully !', {
+    style: {
+      backgroundColor: '#AAFF00',
+      border: '1px solid black',
+    },
+  });
+}
 
 function Modal({ setIsOpen, roomName, roomSize, roomRate }) {
   //Verify the user has inputed all the nesscesary value
@@ -48,6 +58,9 @@ function Modal({ setIsOpen, roomName, roomSize, roomRate }) {
       //Save
       localStorage.setItem("bookedRooms", JSON.stringify(roomList));
     }
+
+    //Notify save completed
+    notify();
   };
 
   //Function to display the price for the customer

@@ -1,4 +1,5 @@
 import RoomInfo from "./RoomInfo";
+import { Toaster } from "react-hot-toast";
 
 function BookingPage() {
   var retrievedObjectString = localStorage.getItem("hotel");
@@ -14,6 +15,21 @@ function BookingPage() {
           room_list.length > 0 &&
           room_list.map((p, i) => <RoomInfo key={i} room={p} />)}
       </div>
+
+      <Toaster
+        toastOptions={{
+          success: {
+            style: {
+              background: "green",
+            },
+          },
+          error: {
+            style: {
+              background: "red",
+            },
+          },
+        }}
+      />
     </>
   );
 }
