@@ -1,10 +1,12 @@
 class Room {
-    constructor(id,image_src,name,rate,size){
-        this.id = id;
-        this.image_src = image_src;
-        this.name = name;
-        this.rate = rate;
-        this.size = size;
+    constructor(ownerName,guestAmount,ownerEmail,ownerPhone,checkInDate,checkOutDate,totalPrice){
+        this.ownerName = ownerName;
+        this.guestAmount = guestAmount;
+        this.ownerEmail = ownerEmail;
+        this.ownerPhone = ownerPhone;
+        this.checkInDate = checkInDate;
+        this.checkOutDate = checkOutDate;
+        this.totalPrice = totalPrice;
     }
 }
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import moment from "moment";
+import Room from "../modeldata/Room";
 
 function Modal({ setIsOpen, roomName, roomSize, roomRate }) {
   //Verify the user has inputed all the nesscesary value
@@ -21,13 +22,42 @@ function Modal({ setIsOpen, roomName, roomSize, roomRate }) {
   //check out date
   const [checkOutDate, setCheckOutDate] = useState();
 
-  const calculateTotalDays = () => {
+  const [price, setPrice] = useState(0);
+
+  const save = () => {
+    var room = new Room(
+      username,
+      guest,
+      email,
+      phone,
+      checkInDate,
+      checkOutDate,
+      price
+    );
+    var roomList = JSON.parse(localStorage.getItem("bookedRooms"));
+
+    if (roomList === null) {
+      roomList = [];
+      roomList.push(room);
+
+      //Save
+      localStorage.setItem("bookedRooms", JSON.stringify(roomList));
+    } else {
+      roomList.push(room);
+
+      //Save
+      localStorage.setItem("bookedRooms", JSON.stringify(roomList));
+    }
+  };
+
+  //Function to display the price for the customer
+  const calculateTotalPrice = () => {
     const MULTIPLIER = 1;
     const a = moment(checkInDate);
     const b = moment(checkOutDate);
     const diff = b.diff(a);
     const duration = moment.duration(diff).asDays();
-    //Calculate price
+
     return duration * roomRate + roomRate * MULTIPLIER;
   };
 
@@ -36,9 +66,15 @@ function Modal({ setIsOpen, roomName, roomSize, roomRate }) {
       <div className="" onClick={() => setIsOpen(false)} />
       <div className="bg-gray-600 bg-opacity-75 m-8 rounded-lg">
         <div className="bg-cyan-800 rounded-lg">
-          <h5 className="font-extrabold text-transparent text-3xl bg-clip-text bg-gradient-to-r from-purple-300 to-pink-600">Renting form</h5>
-          <h5 className="font-extrabold text-transparent text-3xl bg-clip-text bg-gradient-to-r from-purple-300 to-pink-600">Room name: {roomName}</h5>
-          <h5>Room size: {roomSize} m2</h5>
+          <h5 className="font-extrabold text-transparent text-3xl bg-clip-text bg-gradient-to-r from-purple-300 to-pink-600 m-3">
+            Renting form
+          </h5>
+          <h5 className="font-extrabold text-transparent text-1xl bg-clip-text bg-gradient-to-r from-cyan-300 to-pink-600">
+            Room type: {roomName}
+          </h5>
+          <h5 className="font-extrabold text-transparent text-1xl bg-clip-text bg-gradient-to-r from-cyan-300 to-pink-600">
+            Room size: {roomSize} m2
+          </h5>
           <div>
             <span className="text-white">Booking name</span>
             <input
@@ -62,7 +98,7 @@ function Modal({ setIsOpen, roomName, roomSize, roomRate }) {
             ></input>
           </div>
           <div>
-            <span className="text-white">Booking email:{" "}</span>
+            <span className="text-white">Booking email: </span>
             <input
               type="email"
               placeholder="Enter your email"
@@ -73,7 +109,7 @@ function Modal({ setIsOpen, roomName, roomSize, roomRate }) {
             ></input>
           </div>
           <div>
-            <span className="text-white">Booking phone:{" "}</span>
+            <span className="text-white">Booking phone: </span>
             <input
               type="number"
               placeholder="Enter your phone"
@@ -84,7 +120,7 @@ function Modal({ setIsOpen, roomName, roomSize, roomRate }) {
             ></input>
           </div>
           <div>
-            <span className="text-white">Check in date:{" "}</span>
+            <span className="text-white">Check in date: </span>
             <input
               type="date"
               placeholder="check in date"
@@ -95,7 +131,7 @@ function Modal({ setIsOpen, roomName, roomSize, roomRate }) {
             ></input>
           </div>
           <div>
-            <span className="text-white">Check out date:{" "}</span>
+            <span className="text-white">Check out date: </span>
             <input
               type="date"
               placeholder="check out date"
@@ -107,17 +143,21 @@ function Modal({ setIsOpen, roomName, roomSize, roomRate }) {
           </div>
         </div>
 
-        {/**Calculate price once everything is done */}
-        {username && guest && email && phone && checkInDate && checkOutDate && (
-          <div>
-            Price is:
-            {calculateTotalDays()}
-          </div>
+        {price && (
+          <>
+            <h2>Price is: {price}</h2>
+          </>
         )}
 
         <button
           className="text-white bg-green-600 hover:bg-green-400 focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center m-3"
-          onClick={() => setIsOpen(false)}
+          onClick={() => setPrice(calculateTotalPrice())}
+        >
+          Calculate price
+        </button>
+
+        <button className="text-white bg-green-600 hover:bg-green-400 focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center m-3"
+                onClick={() => save() }
         >
           Rent !
         </button>
